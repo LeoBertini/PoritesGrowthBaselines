@@ -25,8 +25,8 @@ def extract_ERSSTv5(ncfille, Dataframe, TimeRangeCol, LatVarName, LonVarName, Sl
         latrange = (round(Dataframe[LatVarName][i] + SlideLatVal_Up),
                     round(Dataframe[LatVarName][i] + SlideLatVal_Btm))
 
-        longrange = (round(Dataframe[LonVarName][i] + SlideLonVal_Up),
-                     round(Dataframe[LonVarName][i] + SlideLonVal_Btm))
+        longrange = (round(Dataframe[LonVarName][i] + SlideLonVal_Up)+180, #because longitude in the model is gridded 0-360,
+                     round(Dataframe[LonVarName][i] + SlideLonVal_Btm)+180)
 
         time_start = (Dataframe[TimeRangeCol][i]).split('-')[0] + '-01-01T00:00'
         time_end = (Dataframe[TimeRangeCol][i]).split('-')[1] + '-12-01T00:00'
@@ -65,8 +65,8 @@ def extract_COADS(ncfille, Dataframe, TimeRangeCol, LatVarName, LonVarName, Slid
         latrange = (round(Dataframe[LatVarName][i] + SlideLatVal_Up),
                     round(Dataframe[LatVarName][i] + SlideLatVal_Btm))
 
-        longrange = (round(Dataframe[LonVarName][i] + SlideLonVal_Up),
-                     round(Dataframe[LonVarName][i] + SlideLonVal_Btm))
+        longrange = (round(Dataframe[LonVarName][i] + SlideLonVal_Up)+180, #because longitude in the model is gridded 0-360,
+                     round(Dataframe[LonVarName][i] + SlideLonVal_Btm)+180)
 
         time_start = (Dataframe[TimeRangeCol][i]).split('-')[0] + '-01-01T00:00'
         time_end = (Dataframe[TimeRangeCol][i]).split('-')[1] + '-12-01T00:00'
@@ -110,11 +110,11 @@ timechunks = [("1854-01-01T00:00", "1870-01-12T00:00:00"),
               ("1940-01-01T00:00", "1990-01-12T00:00:00"),
               ("1843-01-01T00:00", "1855-01-12T00:00:00"),
               ("1990-01-01T00:00", "1999-01-12T00:00:00"),
-              ("1950-01-01T00:00", "2008-01-12T00:00:00"),
+              ("1950-01-01T00:00", "2018-01-12T00:00:00"),
               ]
 
 files_long = []
-download_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/SST_downloads'
+download_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/ERSSTv5'
 for pair in timechunks:
     results = earthaccess.search_data(
         short_name='REYNOLDS_NCDC_L4_MONTHLY_V5',
@@ -129,15 +129,28 @@ for pair in timechunks:
     files = earthaccess.download(results, download_path)
     files_long.append(files)
 
-##TODO reading ERSSTv5 data
-ERSSTv5 = xr.open_mfdataset(paths=os.path.join(download_path, '*.nc'),
-                            engine='netcdf4')  # combine multiple files into single file
+
+##TODO reading ERSSTv5 data until 2007
+ERSSTv5_until2007 = xr.open_mfdataset(paths=os.path.join(download_path, '*.nc'),
+                                      engine='netcdf4', )  # combine multiple files into single file
+
+# TODO reading ERSSTv5 data from 2008 because calendar is defined differently
+download_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/ERSSTv5_2008_onwards'
+ERSSTv5_from2008 = xr.open_mfdataset(paths=os.path.join(download_path, '*.nc'),
+                                     engine='netcdf4', )  # combine multiple files into single file
+ERSSTv5_from2008 = ERSSTv5_from2008.convert_calendar('360_day', align_on='year') #calendar needs conversion to be able to concat array of nc files
+
+ERSSTv5 = xr.merge([ERSSTv5_until2007,ERSSTv5_from2008])
+
 
 ##TODO reading COADS data
 coads_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/COADS_SST/COADS_data.nc'
 coads = xr.open_dataset(filename_or_obj=coads_path, engine='netcdf4', decode_times=False)
 COADS_fixed = fix_calendar(coads)
 COADS_fixed = xr.decode_cf(COADS_fixed)
+
+
+#TODO reading HadlSST data
 
 ##Indonesian samples
 # TODO read spreadsheet and feed data into function to get averages
@@ -186,8 +199,6 @@ Final_DF_MyData = pd.concat([Dataframe_MyData_1, Dataframe_MyData_2, Dataframe_M
 file_name_results = os.path.join(os.path.dirname(excel_path), 'MyDATA_SST_extracted_results.xlsx')
 Final_DF_MyData.to_excel(file_name_results, index=False)
 
-
-
 # Australian Corals
 excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 2 - Leo - General/Coral_QGIS_Spatial_Analyses/Australian_Coral_Growth_Datasets.xlsx'
 Dataframe_Australia = pd.read_excel(excel_path)
@@ -213,24 +224,53 @@ Australia_notfound2 = extract_ERSSTv5(ncfille=ERSSTv5, Dataframe=Australia_notfo
                                       SlideLatVal_Up=-1, SlideLonVal_Up=-1,
                                       SlideLatVal_Btm=2, SlideLonVal_Btm=2)
 
-Dataframe_Australia = pd.concat([Dataframe_Australia_1, Dataframe_Australia_2, Australia_notfound2]).reset_index(drop=True)  # all ERSSTv5 extracted
+Dataframe_Australia = pd.concat([Dataframe_Australia_1, Dataframe_Australia_2, Australia_notfound2]).reset_index(
+    drop=True)  # all ERSSTv5 extracted
 
 Dataframe_Australia = extract_COADS(ncfille=COADS_fixed, Dataframe=Dataframe_Australia, TimeRangeCol='Year_range',
                                     LatVarName='Lat', LonVarName='Lon',
                                     SlideLatVal_Up=-2, SlideLonVal_Up=-2,
                                     SlideLatVal_Btm=0, SlideLonVal_Btm=0)
 
-AustraliaCOADS_1=Dataframe_Australia.loc[Dataframe_Australia['SST_COADS_ann'].notnull()]
-AustraliaCOADS_notfound_1=Dataframe_Australia.loc[Dataframe_Australia['SST_COADS_ann'].isnull()].reset_index(drop=True)
+AustraliaCOADS_1 = Dataframe_Australia.loc[Dataframe_Australia['SST_COADS_ann'].notnull()]
+AustraliaCOADS_notfound_1 = Dataframe_Australia.loc[Dataframe_Australia['SST_COADS_ann'].isnull()].reset_index(
+    drop=True)
 
-AustraliaCOADS_notfound_1 = extract_COADS(ncfille=COADS_fixed, Dataframe=AustraliaCOADS_notfound_1, TimeRangeCol='Year_range',
-                                    LatVarName='Lat', LonVarName='Lon',
-                                    SlideLatVal_Up=-2, SlideLonVal_Up=-2,
-                                    SlideLatVal_Btm=1, SlideLonVal_Btm=1)
+AustraliaCOADS_notfound_1 = extract_COADS(ncfille=COADS_fixed, Dataframe=AustraliaCOADS_notfound_1,
+                                          TimeRangeCol='Year_range',
+                                          LatVarName='Lat', LonVarName='Lon',
+                                          SlideLatVal_Up=-2, SlideLonVal_Up=-2,
+                                          SlideLatVal_Btm=1, SlideLonVal_Btm=1)
 
-Dataframe_Australia= pd.concat([AustraliaCOADS_1,AustraliaCOADS_notfound_1])
-
+Dataframe_Australia = pd.concat([AustraliaCOADS_1, AustraliaCOADS_notfound_1])
 
 # saving results to file
 file_name_results = os.path.join(os.path.dirname(excel_path), 'Australia_SST_extracted_results.xlsx')
 Dataframe_Australia.to_excel(file_name_results, index=False)
+
+# literature review SST extraction
+lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 2 - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
+Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Revised_Literature_Points")
+
+try:
+    Dataframe_Literature = extract_ERSSTv5(ncfille=ERSSTv5, Dataframe=Dataframe_Literature, TimeRangeCol='Year_range',
+                                          LatVarName='Lat', LonVarName='Lon',
+                                          SlideLatVal_Up=-1, SlideLonVal_Up=-1,
+                                          SlideLatVal_Btm=0, SlideLonVal_Btm=0)
+finally:
+    file_name_results = os.path.join(os.path.dirname(lit_rev_path), 'LitReview_SST_extracted_results.xlsx')
+
+Dataframe_Literature_1 = Dataframe_Literature.loc[Dataframe_Literature['SST_ERSSTv5_ann'].notnull()]
+
+Dataframe_Literature_notfound1 = Dataframe_Literature.loc[Dataframe_Literature['SST_ERSSTv5_ann'].isnull()].reset_index(drop=True)
+
+try:
+    Dataframe_Literature_notfound1 = extract_ERSSTv5(ncfille=ERSSTv5, Dataframe=Dataframe_Literature_notfound1, TimeRangeCol='Year_range',
+                                          LatVarName='Lat', LonVarName='Lon',
+                                          SlideLatVal_Up=-2, SlideLonVal_Up=-2,
+                                          SlideLatVal_Btm=2, SlideLonVal_Btm=2)
+finally:
+    print('Check file')
+
+
+Dataframe_Literature.to_excel(file_name_results, index=False)
