@@ -22,7 +22,7 @@ def reg_coef(x,y,label=None,color=None,**kwargs):
 #scatter plot matrix
 # importing
 
-excel_path='/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 2 - Leo - General/Coral_QGIS_Spatial_Analyses/Australian_Coral_Growth_Datasets.xlsx'
+excel_path='/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Australia_SST_extracted_results.xlsx'
 Dataframe_Australia=pd.read_excel(excel_path)
 
 Dataframe_Australia = Dataframe_Australia.filter(items=['ReefProvince','Calcification','SST_HadlSST_ann','SST_COADS_ann','SST_ERSSTv5_ann'])
@@ -43,15 +43,22 @@ g = sns.PairGrid(Dataframe_Australia)
 g.map_diag(sns.distplot)
 g.map_lower(sns.regplot)
 g.map_upper(reg_coef)
-fig_name=os.path.join(os.path.dirname(excel_path),'scatter_plot_fig.png')
+
+fig_name=os.path.join(os.path.dirname(excel_path),'All_Australian_scatter_plot_fig.png')
 g.savefig(fname=fig_name, dpi=300)
 
 g = sns.PairGrid(WA_DF)
 g.map_diag(sns.distplot)
 g.map_lower(sns.regplot)
 g.map_upper(reg_coef)
-fig_name=os.path.join(os.path.dirname(excel_path),'scatter_plot_fig_WA.png')
+fig_name=os.path.join(os.path.dirname(excel_path),'WA_Australia_scatter_plot_figs.png')
 g.savefig(fname=fig_name, dpi=300)
+
+
+
+
+
+
 
 #plot map
 map = Basemap(projection='merc',
