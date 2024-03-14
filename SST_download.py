@@ -23,10 +23,10 @@ def fix_calendar(ds, timevar='T'):
 
 def extract_HadSST(ncfile, Dataframe, TimeRangeCol):
     # initiating new columns to append data to
-    Dataframe["SST_HadSST_sd"] = np.nan
     Dataframe["SST_HadSST_ann"] = np.nan
     Dataframe["SST_HadSST_min"] = np.nan
     Dataframe["SST_HadSST_max"] = np.nan
+    Dataframe["SST_HadSST_sd"] = np.nan
     Dataframe["SST_HadSST_LatGridCell"] = np.nan
     Dataframe["SST_HadSST_LonGridCell"] = np.nan
     Dataframe["SST_HadSST_TimeSpan"] = np.nan
@@ -280,14 +280,14 @@ excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibrari
 Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table1")
 # remove first row
 Dataframe_MyData = Dataframe_MyData.drop([0]).reset_index()
-TEST_1 = extract_HadSST(ncfile=ERSSTv5, Dataframe=Dataframe_MyData, TimeRangeCol='MGA year range')
+TEST_1 = extract_HadSST(ncfile=HadlSST, Dataframe=Dataframe_MyData, TimeRangeCol='MGA year range')
 outfile_name = os.path.join(os.path.dirname(excel_path), 'SST_Extracted_Results_MyData.xlsx')
 TEST_1.to_excel(outfile_name)
 
 #Australian Corals
 excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 2 - Leo - General/Coral_QGIS_Spatial_Analyses/Australian_Coral_Growth_Datasets.xlsx'
 Dataframe_Australia = pd.read_excel(excel_path)
-Dataframe_LiteratureDataframe_Australia = Dataframe_Australia.reset_index()
+Dataframe_Australia = Dataframe_Australia.reset_index()
 TEST_2 = extract_HadSST(ncfile=HadlSST, Dataframe=Dataframe_Australia, TimeRangeCol='Year_range')
 outfile_name = os.path.join(os.path.dirname(excel_path), 'SST_Extracted_Results_AustralianCorals.xlsx')
 TEST_2.to_excel(outfile_name)
