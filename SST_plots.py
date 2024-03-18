@@ -55,11 +55,6 @@ fig_name=os.path.join(os.path.dirname(excel_path),'WA_Australia_scatter_plot_fig
 g.savefig(fname=fig_name, dpi=300)
 
 
-
-
-
-
-
 #plot map
 map = Basemap(projection='merc',
               llcrnrlon=100+10,

@@ -284,17 +284,10 @@ TEST_1 = extract_HadSST(ncfile=HadlSST, Dataframe=Dataframe_MyData, TimeRangeCol
 outfile_name = os.path.join(os.path.dirname(excel_path), 'SST_Extracted_Results_MyData.xlsx')
 TEST_1.to_excel(outfile_name)
 
-#Australian Corals
-excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 2 - Leo - General/Coral_QGIS_Spatial_Analyses/Australian_Coral_Growth_Datasets.xlsx'
-Dataframe_Australia = pd.read_excel(excel_path)
-Dataframe_Australia = Dataframe_Australia.reset_index()
-TEST_2 = extract_HadSST(ncfile=HadlSST, Dataframe=Dataframe_Australia, TimeRangeCol='Year_range')
-outfile_name = os.path.join(os.path.dirname(excel_path), 'SST_Extracted_Results_AustralianCorals.xlsx')
-TEST_2.to_excel(outfile_name)
 
-# Literature review
+# Literature review + Australian Corals
 lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 2 - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
-Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Revised_Literature_Points")
+Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Aggregated_MapLayer")
 Dataframe_Literature = Dataframe_Literature.reset_index()
 TEST_3 = extract_HadSST(ncfile=HadlSST, Dataframe=Dataframe_Literature, TimeRangeCol='Year_range')
 outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'SST_Extracted_Results_LitReview.xlsx')
