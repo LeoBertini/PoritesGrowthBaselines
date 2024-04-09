@@ -14,7 +14,6 @@ from haversine import haversine
 from scipy.spatial import KDTree
 import geopy.distance
 
-
 def fix_calendar(ds, timevar='T'):
     if ds[timevar].attrs['calendar'] == '360':
         ds[timevar].attrs['calendar'] = '360_day'
