@@ -122,6 +122,7 @@ Dataframe_Literature = Dataframe_Literature.reset_index()
 TEST1 = extract_Kd490(ncfile=KD_dataset, varname='Kd_490',
                       Dataframe=Dataframe_Literature, TimeRange=(time_start,time_end))
 outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'Kd490_Extracted_Results_LitReview.xlsx')
+TEST1.to_excel(outfile_name)
 
 
 #My Data
@@ -130,7 +131,10 @@ Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table1")
 # remove first row
 Dataframe_MyData = Dataframe_MyData.drop([0]).reset_index()
 TEST2 = extract_Kd490(ncfile=KD_dataset,varname='Kd_490',
-                   Dataframe=Dataframe_MyData, TimeRangeCol='Year_range')
+                   Dataframe=Dataframe_MyData, TimeRange=(time_start,time_end))
 outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_MyData.xlsx')
 TEST2.to_excel(outfile_name)
+
+# #vizualising my data
+# example_plot=KD_dataset[varname].isel(Time=0).plot()
 
