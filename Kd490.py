@@ -67,8 +67,8 @@ def extract_Kd490(ncfile, Dataframe, TimeRange, varname):
                 values = np.asarray(check_series.variables[varname][:])
 
                 # update values on dataframe
-                Dataframe.loc[i, "Kd490_mean"] = np.nanstd(values)
-                Dataframe.loc[i, "Kd490_sd"] = np.nanmean(values)
+                Dataframe.loc[i, "Kd490_mean"] = np.nanmean(values)
+                Dataframe.loc[i, "Kd490_sd"] = np.nanstd(values)
                 Dataframe.loc[i, "Kd490_LatGridCell"] = out[close_point_idx][1][0]
                 Dataframe.loc[i, "Kd490_LonGridCell"] = out[close_point_idx][1][1]
                 Dataframe.at[i, 'Kd490_TimeSpan'] = list(TimeRange)
