@@ -116,14 +116,14 @@ time_start = files[0].split("/")[-1].split('.')[1].split('_')[0]
 time_end = files[-1].split("/")[-1].split('.')[1].split('_')[0]
 
 ########## extracting closest Kd490 from my sites
-lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 3 - Results Chapter - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
-Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Aggregated_MapLayer")
-Dataframe_Literature = Dataframe_Literature.reset_index()
-TEST1 = extract_Kd490(ncfile=KD_dataset, varname='Kd_490',
-                      Dataframe=Dataframe_Literature, TimeRange=(time_start,time_end))
-outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'Kd490_Extracted_Results_LitReview.xlsx')
-TEST1.to_excel(outfile_name)
-
+# lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 3 - Results Chapter - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
+# Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Aggregated_MapLayer")
+# Dataframe_Literature = Dataframe_Literature.reset_index()
+# TEST1 = extract_Kd490(ncfile=KD_dataset, varname='Kd_490',
+#                       Dataframe=Dataframe_Literature, TimeRange=(time_start,time_end))
+# outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'Kd490_Extracted_Results_LitReview.xlsx')
+# TEST1.to_excel(outfile_name)
+#
 
 #My Data
 excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Tables_and_Regional_Sectors_Averages.xlsx'
@@ -135,6 +135,8 @@ TEST2 = extract_Kd490(ncfile=KD_dataset,varname='Kd_490',
 outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_MyData.xlsx')
 TEST2.to_excel(outfile_name)
 
-# #vizualising my data
-# example_plot=KD_dataset[varname].isel(Time=0).plot()
 
+# #vizualising my data
+my_plot=KD_dataset[varname].mean(dim='Time').plot(vmin=0, vmax=.15, cmap="viridis")
+plt.show()
+plt.savefig(fname='Kd490_Annual_Mean_2002-2022.png', dpi=300)
