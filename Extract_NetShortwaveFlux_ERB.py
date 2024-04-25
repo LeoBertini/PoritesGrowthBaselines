@@ -1,12 +1,10 @@
 import os
-import earthaccess
 import cdsapi
 import numpy as np
 import xarray as xr
 import pandas as pd
 import geopy.distance
-import cartopy.crs as ccrs
-import matplotlib.pyplot as plt
+
 
 
 def extract_DSR(ncfile, Dataframe, TimeRangeCol, varname):
