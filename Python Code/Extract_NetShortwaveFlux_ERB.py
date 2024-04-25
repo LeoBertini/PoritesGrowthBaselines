@@ -141,7 +141,7 @@ TEST1.to_excel(outfile_name)
 
 #My Data
 excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Tables_and_Regional_Sectors_Averages.xlsx'
-Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table1")
+Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table 2")
 # remove first row
 Dataframe_MyData = Dataframe_MyData.drop([0]).reset_index()
 TEST2 = extract_DSR(ncfile=DSR_dataset,varname='SNS',
