@@ -37,4 +37,4 @@ Below, you'll find a brief description of directories in this repository, which 
 - Code used for processing literature review data based (source table imported by the code in [Data](https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/Data))
 
 ## [R Code](https://github.com/LeoBertiniNHM/IndoPacific_PoritesGrowthBaselines/tree/c4b77aa746635c91fd8eca7461cfa2f973347977/R%20Code)
-- Code for statistical analyses and figures. Test
+- Code for statistical analyses and figures. Test/.
