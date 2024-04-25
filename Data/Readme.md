@@ -22,7 +22,7 @@ This project was supported by:
 
 This work was a joint effort across people from the following institutions:
 <p align="center">
-  <img src="https://github.com/LeoBertiniNHM//blob/main/PhantomExtraction/GIFs/LogoInstitutions.png" height="300" width="600" >
+  <img src="https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/blob/main/Figures/LogoInstitutions.png" height="300" width="600" >
 </p>
 
 =================== =================== =================== =================== ===================
