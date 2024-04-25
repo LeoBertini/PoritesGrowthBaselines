@@ -28,13 +28,13 @@ This work was a joint effort across people from the following institutions:
 
 Below, you'll find a brief description of directories in this repository, which might have their own 'README' files with further info.
 
-## [Data](https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/Data)
+## [Data]()
 - Contains download links to coral X-ray slab images, manual tracings of maximum growth axis and published tables with extracted data.
 
-## [Python Code](https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/Data)
+## [Python Code]()
 - Code for coral virtual slab processing
 - Remote sensing extraction of SST, Light Availability and Turbidity spatially gridded data from remote sensing products. 
 - Code used for processing literature review data based (source table imported by the code in [Data](https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/Data))
 
-## [R and Python Code](https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/Data)
-- Code for statistical analyses and figures (R)
+## [R Code]()
+- Code for statistical analyses and figures
