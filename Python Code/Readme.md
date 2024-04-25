@@ -1,16 +1,16 @@
 # Description of files 
 
-* X-ray images of coral virtual slabs used in this study [can be accessed here](https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/Data)
+* Extract_Kd490.py
+  * Extracts spatially-gridded data from .nc files provided by [Aqua-MODIS](https://oceancolor.gsfc.nasa.gov/l3/)
+  
+
+* Extract_NetShortwaveFlux_ERB.py
+  *Extracts spatially-gridded data from .nc files provided by [Surface Radiation Budget Dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview)
 
 
-* ROI.zip files containing tracings of maximum growth axes tracks on virtual slabs [can be accessed here](https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/Data). 
-A single ROI.zip file can be superimposed onto its corresponding virtual slab for visualisation of tracings using [Fiji](https://imagej.net/software/fiji/). The results of extracted measurements on slabs are in [ROI_extraction_results.xlsx](https://github.com/LeoBertiniNHM/CoralTriangle_SST_Reconstructions/blob/811cc5006c0a84d66b65052fa2c30344851c30a3/Data/ROI_extraction_results.xlsx) 
+* Extract_SST_HadlSST.py
+  *Extracts spatially-gridded data from .nc files provided by [Met Office - HadISST 1.1](https://www.metoffice.gov.uk/hadobs/hadisst/)
 
 
-* Extracted environmental variables for all reef sites used in this study and existing literature are included as part of Excel spreadsheets
-  * SST_Extract_Results_...xlsx
-  * DSR_Extracted_Results_...xlsx
-  * Kd490_Extracted_Results_...xlsx
-
-
-* Indo-Pacific Warm Pool SST anomalies extracted from D'Arrigo et al. (2009) are in [IPWP_ExtractedAnomalies.xlsx](https://github.com/LeoBertiniNHM/CoralTriangle_SST_Reconstructions/blob/c4b77aa746635c91fd8eca7461cfa2f973347977/Data/IPWP_ExtractedAnomalies.xlsx)
+* Literature_DataOverview.py
+  * Script used to digest literature review data in Table 1 to produce an overview of available data on coral growth variables across the Indo-Pacific (see  [Figure 2](https://github.com/LeoBertiniNHM/CoralTriangle_SST_Reconstructions/blob/7e5ab7c28a1ffc6cbce839b29c1a128055d45192/Figures/Fig2_Literature_Analyses.png]))
