@@ -126,13 +126,13 @@ TEST2.to_excel(outfile_name)
 
 
 #Lit Data
-excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 3 - Results Chapter - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
+excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Extracted_Results_LitReview_Final.xlsx'
 Dataframe_MyData = pd.read_excel(excel_path, sheet_name="To_Extract")
 # remove first row
 Dataframe_MyData = Dataframe_MyData.reset_index()
 TEST2 = extract_Kd490(ncfile=KD_dataset,varname='Kd_490',
                    Dataframe=Dataframe_MyData, TimeRange=(time_start,time_end))
-outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_Literature.xlsx')
+outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_LiteratureExtra.xlsx')
 TEST2.to_excel(outfile_name)
 
 

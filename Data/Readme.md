@@ -7,9 +7,8 @@ A single ROI.zip file can be superimposed onto its corresponding virtual slab fo
 
 
 * Extracted environmental variables for all reef sites used in this study and existing literature are included as part of Excel spreadsheets
-  * SST_Extract_Results_...xlsx
-  * DSR_Extracted_Results_...xlsx
-  * Kd490_Extracted_Results_...xlsx
+  * Extract_Results_SST_DSR_Kd490_MuseumSpecimens.xlsx 
+  * Extract_Results_SST_DSR_Kd490_Literature.xlsx
 
 
 * Indo-Pacific Warm Pool SST anomalies extracted from D'Arrigo et al. (2009) are in [IPWP_ExtractedAnomalies.xlsx](https://github.com/LeoBertiniNHM/PoritesGrowthBaselines/Data/IPWP_ExtractedAnomalies.xlsx)
