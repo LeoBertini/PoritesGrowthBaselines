@@ -13,4 +13,4 @@
 
 
 * Literature_DataOverview.py
-  * Script used to digest literature review data in Table 1 to produce an overview of available data on coral growth variables across the Indo-Pacific (see  [Figure 2](https://github.com/LeoBertiniNHM/CoralTriangle_SST_Reconstructions/blob/7e5ab7c28a1ffc6cbce839b29c1a128055d45192/Figures/Fig2_Literature_Analyses.png]))
+  * Script used to digest literature review data in Table 1 to produce a miscellaneous overview of available data on coral growth variables across the Indo-Pacific. 

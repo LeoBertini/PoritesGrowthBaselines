@@ -131,14 +131,6 @@ DSR = DSR_dataset.variables[varname]
 
 ########## extracting closest DSR from my sites
 
-lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 3 - Results Chapter - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
-Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Aggregated_MapLayer")
-Dataframe_Literature = Dataframe_Literature.reset_index()
-TEST1 = extract_DSR(ncfile=DSR_dataset,varname='SNS',
-                   Dataframe=Dataframe_Literature, TimeRangeCol='Year_range')
-outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'DSR_ERB_Extracted_Results_LitReview.xlsx')
-TEST1.to_excel(outfile_name)
-
 #My Data
 excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Tables_and_Regional_Sectors_Averages.xlsx'
 Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table 2")
@@ -146,16 +138,16 @@ Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table 2")
 Dataframe_MyData = Dataframe_MyData.drop([0]).reset_index()
 TEST2 = extract_DSR(ncfile=DSR_dataset,varname='SNS',
                    Dataframe=Dataframe_MyData, TimeRangeCol='Year_range')
-outfile_name = os.path.join(os.path.dirname(excel_path), 'DSR_ERB_Extracted_Results_MyData.xlsx')
+outfile_name = os.path.join(os.path.dirname(excel_path), 'DSR_ERB_Extracted_Results_MuseumSpecimens.xlsx')
 TEST2.to_excel(outfile_name)
 
-#Long Cores
+#Literature Data
 lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 3 - Results Chapter - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
 Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="To_Extract")
 Dataframe_Literature = Dataframe_Literature.reset_index()
 TEST1 = extract_DSR(ncfile=DSR_dataset,varname='SNS',
                    Dataframe=Dataframe_Literature, TimeRangeCol='Year_range')
-outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'DSR_ERB_Extracted_Results_SouthChinaSea.xlsx')
+outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'DSR_ERB_Extracted_Results_Literature.xlsx')
 TEST1.to_excel(outfile_name)
 
 

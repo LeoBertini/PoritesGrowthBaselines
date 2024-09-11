@@ -12,8 +12,6 @@ This repository contains Supporting Material with Python and R code to accompany
                     The code is distributed under the MIT license https://en.wikipedia.org/wiki/MIT_License
 
 
-=================== =================== =================== =================== ===================
-
 This project was supported by:
 - [4D-Reef](https://www.4d-reef.eu/), a Marie Skłodowska-Curie Innovative Training Network funded by European Union Horizon 2020 research and innovation programme
 - The [Natural History Museum](https://www.nhm.ac.uk/) Science Investment Fund. 
@@ -23,8 +21,6 @@ This work was a joint effort across people from the following institutions:
 <p align="center">
   <img src="https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/blob/main/Figures/LogoInstitutions.png" height="300" width="600" >
 </p>
-
-=================== =================== =================== =================== ===================
 
 Below, you'll find a brief description of directories in this repository, which might have their own 'README' files with further info.
 

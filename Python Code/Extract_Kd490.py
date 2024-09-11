@@ -114,7 +114,6 @@ time_start = files[0].split("/")[-1].split('.')[1].split('_')[0]
 time_end = files[-1].split("/")[-1].split('.')[1].split('_')[0]
 
 
-
 #My Data
 excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Tables_and_Regional_Sectors_Averages.xlsx'
 Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table 2")
@@ -122,7 +121,7 @@ Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table 2")
 Dataframe_MyData = Dataframe_MyData.drop([0]).reset_index()
 TEST2 = extract_Kd490(ncfile=KD_dataset,varname='Kd_490',
                    Dataframe=Dataframe_MyData, TimeRange=(time_start,time_end))
-outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_MyData.xlsx')
+outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_MuseumSpecimens.xlsx')
 TEST2.to_excel(outfile_name)
 
 
@@ -133,7 +132,7 @@ Dataframe_MyData = pd.read_excel(excel_path, sheet_name="To_Extract")
 Dataframe_MyData = Dataframe_MyData.reset_index()
 TEST2 = extract_Kd490(ncfile=KD_dataset,varname='Kd_490',
                    Dataframe=Dataframe_MyData, TimeRange=(time_start,time_end))
-outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_SouthChinaSea.xlsx')
+outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_Literature.xlsx')
 TEST2.to_excel(outfile_name)
 
 
