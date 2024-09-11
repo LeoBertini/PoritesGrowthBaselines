@@ -108,9 +108,9 @@ TEST_1.to_excel(outfile_name)
 
 # Literature review
 lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 3 - Results Chapter - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
-Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Cores_Extract")
+Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="To_Extract")
 Dataframe_Literature = Dataframe_Literature.reset_index()
 TEST_3 = extract_HadSST(ncfile=HadlSST, Dataframe=Dataframe_Literature, TimeRangeCol='Year_range')
-outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'SST_Extracted_Results_LitReview_Lough_Cores.xlsx')
+outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'SST_Extracted_Results_LitReview_SouthChinaSea.xlsx')
 TEST_3.to_excel(outfile_name)
 

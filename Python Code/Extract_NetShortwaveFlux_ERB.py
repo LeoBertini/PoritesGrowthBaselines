@@ -151,11 +151,11 @@ TEST2.to_excel(outfile_name)
 
 #Long Cores
 lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 3 - Results Chapter - Leo - General/Coral_QGIS_Spatial_Analyses/Revised_Literature_Points_Summarised.xlsx'
-Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Cores_Extract")
+Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="To_Extract")
 Dataframe_Literature = Dataframe_Literature.reset_index()
 TEST1 = extract_DSR(ncfile=DSR_dataset,varname='SNS',
                    Dataframe=Dataframe_Literature, TimeRangeCol='Year_range')
-outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'DSR_ERB_Extracted_Results_LitReview.xlsx')
+outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'DSR_ERB_Extracted_Results_SouthChinaSea.xlsx')
 TEST1.to_excel(outfile_name)
 
 
