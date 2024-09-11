@@ -5,11 +5,11 @@
   
 
 * Extract_NetShortwaveFlux_ERB.py
-  *Extracts spatially-gridded data from .nc files provided by [Surface Radiation Budget Dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview)
+  * Extracts spatially-gridded data from .nc files provided by [Surface Radiation Budget Dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview)
 
 
 * Extract_SST_HadlSST.py
-  *Extracts spatially-gridded data from .nc files provided by [Met Office - HadISST 1.1](https://www.metoffice.gov.uk/hadobs/hadisst/)
+  * Extracts spatially-gridded data from .nc files provided by [Met Office - HadISST 1.1](https://www.metoffice.gov.uk/hadobs/hadisst/)
 
 
 * Literature_DataOverview.py
