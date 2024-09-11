@@ -132,7 +132,7 @@ Dataframe_MyData = pd.read_excel(excel_path, sheet_name="To_Extract")
 Dataframe_MyData = Dataframe_MyData.reset_index()
 TEST2 = extract_Kd490(ncfile=KD_dataset,varname='Kd_490',
                    Dataframe=Dataframe_MyData, TimeRange=(time_start,time_end))
-outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_LiteratureExtra.xlsx')
+outfile_name = os.path.join(os.path.dirname(excel_path), 'Kd490_Extracted_Results_Literature.xlsx')
 TEST2.to_excel(outfile_name)
 
 
