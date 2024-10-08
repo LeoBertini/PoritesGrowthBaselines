@@ -132,8 +132,8 @@ DSR = DSR_dataset.variables[varname]
 ########## extracting closest DSR from my sites
 
 #My Data
-excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Tables_and_Regional_Sectors_Averages.xlsx'
-Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table 2")
+excel_path = '/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_MuseumSpecimens.xlsx'
+Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Sheet1")
 # remove first row
 Dataframe_MyData = Dataframe_MyData.drop([0]).reset_index()
 TEST2 = extract_DSR(ncfile=DSR_dataset,varname='SNS',
@@ -142,8 +142,8 @@ outfile_name = os.path.join(os.path.dirname(excel_path), 'DSR_ERB_Extracted_Resu
 TEST2.to_excel(outfile_name)
 
 #Literature Data
-lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Extracted_Results_LitReview_Final.xlsx'
-Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="To_Extract")
+lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_Literature.xlsx'
+Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Sheet1")
 Dataframe_Literature = Dataframe_Literature.reset_index()
 TEST1 = extract_DSR(ncfile=DSR_dataset,varname='SNS',
                    Dataframe=Dataframe_Literature, TimeRangeCol='Year_range')

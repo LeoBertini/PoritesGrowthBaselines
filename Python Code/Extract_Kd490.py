@@ -115,8 +115,8 @@ time_end = files[-1].split("/")[-1].split('.')[1].split('_')[0]
 
 
 #My Data
-excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Tables_and_Regional_Sectors_Averages.xlsx'
-Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table 2")
+excel_path = '/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_MuseumSpecimens.xlsx'
+Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Sheet1")
 # remove first row
 Dataframe_MyData = Dataframe_MyData.drop([0]).reset_index()
 TEST2 = extract_Kd490(ncfile=KD_dataset,varname='Kd_490',
@@ -126,8 +126,8 @@ TEST2.to_excel(outfile_name)
 
 
 #Lit Data
-excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Extracted_Results_LitReview_Final.xlsx'
-Dataframe_MyData = pd.read_excel(excel_path, sheet_name="To_Extract")
+excel_path = '/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_Literature.xlsx'
+Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Sheet 1")
 # remove first row
 Dataframe_MyData = Dataframe_MyData.reset_index()
 TEST2 = extract_Kd490(ncfile=KD_dataset,varname='Kd_490',

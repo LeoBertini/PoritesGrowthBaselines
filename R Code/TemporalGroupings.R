@@ -16,7 +16,7 @@ library(sjPlot)
 setwd('/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/RScripts')
 
 #My data
-Mydata_path="/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Extracted_Results_MuseumSpecimens_Final.xlsx"
+Mydata_path="/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_MuseumSpecimens.xlsx"
 Mydata = read_excel(Mydata_path, sheet = 'Grouped')
 Mydata$Calcification_sd=as.numeric(Mydata$Calcification_sd)
 Mydata$Extension_sd=as.numeric(Mydata$Extension_sd)
@@ -24,7 +24,7 @@ Mydata$Density_sd=as.numeric(Mydata$Density_sd)
 Mydata['MidYear'] = Mydata$YearMin + (Mydata$YearMax-Mydata$YearMin)/2
 
 #Literature data
-Lit_path="/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Extracted_Results_LitReview_Final.xlsx"
+Lit_path="/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_Literature.xlsx"
 Litdata = read_excel(Lit_path, sheet = 'Grouped')
 Litdata$YearMax=as.numeric(Litdata$YearMax)
 Litdata$YearMin=as.numeric(Litdata$YearMin)

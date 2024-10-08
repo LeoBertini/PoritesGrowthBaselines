@@ -20,7 +20,7 @@ library(sjPlot)
 # SST_relationship --------------------------------------------------------
 
 # importing datasets
-Mydata_path="/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Extracted_Results_MuseumSpecimens_Final.xlsx"
+Mydata_path="/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_MuseumSpecimens_Final.xlsx"
 Mydata = read_excel(Mydata_path, sheet = 'Sheet1')
 Mydata$Regional_Sector=as.factor(Mydata$Regional_Sector)
 Mydata$Endobionts=as.factor(Mydata$Endobionts)
@@ -216,7 +216,7 @@ aa$Density_mean/bb$Density_mean
 
 
 #Literature data
-Lit_path="/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Extracted_Results_LitReview_Final.xlsx"
+Lit_path="/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_Literature.xlsx"
 Litdata = read_excel(Lit_path, sheet = 'Sheet1')
 Litdata$Reef_Province=as.factor(Litdata$Reef_Province)
 Litdata$Extension=as.numeric(Litdata$Extension)

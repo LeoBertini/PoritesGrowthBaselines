@@ -97,8 +97,8 @@ HadlSST = HadlSST.convert_calendar('360_day', align_on='year')
 
 #My Data
 # read spreadsheet and feed data into function to get SSTs
-excel_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Tables_and_Regional_Sectors_Averages.xlsx'
-Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Table 2")
+excel_path = '/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_MuseumSpecimens.xlsx'
+Dataframe_MyData = pd.read_excel(excel_path, sheet_name="Sheet1")
 # remove first row
 Dataframe_MyData = Dataframe_MyData.drop([0]).reset_index()
 TEST_1 = extract_HadSST(ncfile=HadlSST, Dataframe=Dataframe_MyData, TimeRangeCol='MGA year range')
@@ -107,8 +107,8 @@ TEST_1.to_excel(outfile_name)
 
 
 # Literature review
-lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Extracted_Results_LitReview_Final.xlsx'
-Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="To_Extract")
+lit_rev_path = '/Users/leonardobertini/Library/CloudStorage/Extracted_Results_SST_DSR_Kd490_Literature.xlsx'
+Dataframe_Literature = pd.read_excel(lit_rev_path, sheet_name="Sheet1")
 Dataframe_Literature = Dataframe_Literature.reset_index()
 TEST_3 = extract_HadSST(ncfile=HadlSST, Dataframe=Dataframe_Literature, TimeRangeCol='Year_range')
 outfile_name = os.path.join(os.path.dirname(lit_rev_path), 'SST_Extracted_Results_Literature.xlsx')
