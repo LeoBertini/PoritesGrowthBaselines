@@ -25,7 +25,7 @@ This work was a joint effort across people from the following institutions:
 Below, you'll find a brief description of directories in this repository, which might have their own 'README' files with further info.
 
 ## [Data](https://github.com/LeoBertiniNHM/CoralTriangle_PoritesGrowthBaselines/tree/203395d57e9f878457cb66a91f8b8be146ac4dc7/Data/)
-- Contains download links to remote sensing data extracted for datapoints representing locations where there are available literature as well as for museum specimens.
+- Contains download links to remote sensing data extracted for datapoints representing locations where there are available literature as well as metadata for museum specimens.
 
 ## [Python Code](https://github.com/LeoBertiniNHM/IndoPacific_PoritesGrowthBaselines/tree/c4b77aa746635c91fd8eca7461cfa2f973347977/Python%20Code)
 - Remote sensing extraction of SST, Light Availability and Turbidity spatially gridded data from remote sensing products. 
